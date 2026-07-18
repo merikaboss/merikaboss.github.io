@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Merika Boss — Trader, Developer, Educator</title>
+<meta name="description" content="MerikaBoss is a trader, developer and educator sharing content about trading, psychology, discipline and personal growth. Building one lesson at a time." />
+<link rel="icon" href="profile.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0906;
+    --bg-soft:#120e09;
+    --gold:#d1a85e;
+    --gold-bright:#f0d391;
+    --gold-deep:#7a5f31;
+    --line:#2a2115;
+    --ivory:#ece4d3;
+    --ivory-dim:#9c9280;
+    --ember:#8a3324;
+    --ember-bright:#c65a3f;
+    --max:1080px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ivory);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .display{
+    font-family:'Cinzel', serif;
+    letter-spacing:0.04em;
+  }
+
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ---------- ambient background ---------- */
+  .glow{
+    position:fixed;
+    top:-20%;
+    left:50%;
+    transform:translateX(-50%);
+    width:900px;
+    height:900px;
+    background:radial-gradient(circle, rgba(209,168,94,0.14) 0%, rgba(209,168,94,0) 60%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .chart-line{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    opacity:0.06;
+    pointer-events:none;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    z-index:1;
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 24px 40px;
+  }
+
+  .emblem{
+    width:132px;
+    height:132px;
+    border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 0 0 1px var(--gold-deep), 0 0 60px rgba(209,168,94,0.25);
+    opacity:0;
+    animation:rise 0.9s ease forwards;
+  }
+
+  .brand-name{
+    margin:28px 0 0;
+    font-size:clamp(2.4rem, 7vw, 4.2rem);
+    color:var(--gold-bright);
+    opacity:0;
+    animation:rise 0.9s ease 0.15s forwards;
+  }
+
+  .tagline{
+    margin:18px 0 0;
+    max-width:560px;
+    color:var(--ivory-dim);
+    font-size:1.05rem;
+    opacity:0;
+    animation:rise 0.9s ease 0.3s forwards;
+  }
+
+  .tagline strong{
+    color:var(--ivory);
+    font-weight:500;
+  }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ---------- ticker ---------- */
+  .ticker-wrap{
+    position:relative;
+    z-index:1;
+    width:100%;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--bg-soft);
+    overflow:hidden;
+    padding:16px 0;
+  }
+
+  .ticker-track{
+    display:flex;
+    width:max-content;
+    animation:scroll 34s linear infinite;
+  }
+
+  .ticker-wrap:hover .ticker-track{
+    animation-play-state:paused;
+  }
+
+  .ticker-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 32px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    letter-spacing:0.03em;
+    color:var(--ivory-dim);
+    white-space:nowrap;
+    border-right:1px solid var(--line);
+    transition:color 0.2s ease;
+  }
+
+  .ticker-item:hover{ color:var(--gold-bright); }
+
+  .ticker-item .dot{
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--ember-bright);
+  }
+
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- sections ---------- */
+  section{
+    position:relative;
+    z-index:1;
+    max-width:var(--max);
+    margin:0 auto;
+    padding:96px 24px;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 18px;
+  }
+
+  .eyebrow::before{
+    content:'';
+    display:inline-block;
+    width:22px;
+    height:1px;
+    background:var(--gold-deep);
+    margin-right:10px;
+    vertical-align:middle;
+  }
+
+  h2.section-title{
+    font-family:'Cinzel', serif;
+    font-size:clamp(1.6rem, 4vw, 2.3rem);
+    color:var(--ivory);
+    margin:0 0 28px;
+  }
+
+  .about-text{
+    max-width:640px;
+    color:var(--ivory-dim);
+    font-size:1.05rem;
+  }
+
+  .about-text p + p{ margin-top:18px; }
+
+  /* ---------- lessons ---------- */
+  .lessons-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+
+  .lesson-card{
+    background:var(--bg);
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    transition:background 0.25s ease;
+  }
+
+  .lesson-card:hover{
+    background:var(--bg-soft);
+  }
+
+  .lesson-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ember-bright);
+  }
+
+  .lesson-card h3{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    color:var(--ivory);
+    margin:0;
+    line-height:1.4;
+  }
+
+  .lesson-card p{
+    color:var(--ivory-dim);
+    font-size:0.92rem;
+    margin:0;
+    flex-grow:1;
+  }
+
+  .lesson-link{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    color:var(--gold);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  .lesson-link::after{
+    content:'→';
+    transition:transform 0.2s ease;
+  }
+
+  .lesson-card:hover .lesson-link::after{
+    transform:translateX(4px);
+  }
+
+  /* ---------- connect directory ---------- */
+  .directory{
+    border-top:1px solid var(--line);
+  }
+
+  .directory-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 4px;
+    border-bottom:1px solid var(--line);
+    transition:padding-left 0.25s ease, color 0.25s ease;
+  }
+
+  .directory-row:hover{
+    padding-left:14px;
+    color:var(--gold-bright);
+  }
+
+  .directory-row .platform{
+    font-family:'Cinzel', serif;
+    font-size:1rem;
+    color:inherit;
+  }
+
+  .directory-row .handle{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    color:var(--ivory-dim);
+  }
+
+  .directory-row:hover .handle{ color:var(--gold); }
+
+  /* ---------- footer ---------- */
+  footer{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:56px 24px 64px;
+    border-top:1px solid var(--line);
+  }
+
+  footer .foot-mark{
+    font-family:'Cinzel', serif;
+    color:var(--gold);
+    font-size:1.05rem;
+    letter-spacing:0.08em;
+  }
+
+  footer .foot-sub{
+    margin-top:10px;
+    color:var(--ivory-dim);
+    font-size:0.85rem;
+  }
+
+  footer a.foot-email{
+    color:var(--gold);
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ---------- accessibility ---------- */
+  @media (prefers-reduced-motion: reduce){
+    .emblem, .brand-name, .tagline{ animation:none; opacity:1; }
+    .ticker-track{ animation:none; }
+  }
+
+  :focus-visible{
+    outline:2px solid var(--gold-bright);
+    outline-offset:3px;
+  }
+
+  @media (max-width:600px){
+    section{ padding:64px 20px; }
+    .directory-row{ flex-direction:column; align-items:flex-start; gap:4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow"></div>
+<svg class="chart-line" preserveAspectRatio="none" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <polyline points="0,600 80,560 160,610 240,520 320,540 400,460 480,490 560,400 640,430 720,340 800,370 880,300 960,330 1040,260 1120,290 1200,220"
+    fill="none" stroke="#d1a85e" stroke-width="2"/>
+</svg>
+
+<main>
+
+  <section class="hero" style="padding-bottom:0;">
+    <img class="emblem" src="profile.png" alt="MerikaBoss emblem" />
+    <h1 class="brand-name">MERIKABOSS</h1>
+    <p class="tagline"><strong>Trader and developer • Educator • Digital Creator</strong><br/>Exploring psychology, markets &amp; personal growth. Building one lesson at a time.</p>
+  </section>
+
+  <div class="ticker-wrap" aria-label="Social links ticker">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <section id="about">
+    <p class="eyebrow">About</p>
+    <h2 class="section-title">Who is MerikaBoss?</h2>
+    <div class="about-text">
+      <p>I'm MerikaBoss — a trader, developer, and educator sharing what I learn as I build. This space is where I document the real journey: the markets, the discipline it takes to trade well, the systems and tools I build along the way, and the psychology behind all of it.</p>
+      <p>Not polished theory — actual lessons, pulled from actual work. If you're building, trading, and learning too, you're in the right place.</p>
+    </div>
+  </section>
+
+  <section id="lessons">
+    <p class="eyebrow">Latest Lessons</p>
+    <h2 class="section-title">One lesson at a time</h2>
+    <div class="lessons-grid">
+      <div class="lesson-card">
+        <span class="lesson-tag">Blog</span>
+        <h3>Who is MerikaBoss?</h3>
+        <p>The story behind the trader, developer and educator — and why this all exists.</p>
+        <a class="lesson-link" href="https://merikaboss.wordpress.com/2026/07/18/hello-world/" target="_blank" rel="noopener">Read the post</a>
+      </div>
+      <div class="lesson-card">
+        <span class="lesson-tag">Essay</span>
+        <h3>Trading Psychology</h3>
+        <p>Why the market rewards discipline before it ever rewards strategy.</p>
+        <a class="lesson-link" href="https://medium.com/@merikaboss" target="_blank" rel="noopener">Read on Medium</a>
+      </div>
+      <div class="lesson-card">
+        <span class="lesson-tag">Essay</span>
+        <h3>Discipline Over Emotion</h3>
+        <p>The real edge isn't a better indicator. It's what you do when the trade goes wrong.</p>
+        <a class="lesson-link" href="https://medium.com/@merikaboss" target="_blank" rel="noopener">Read on Medium</a>
+      </div>
+      <div class="lesson-card">
+        <span class="lesson-tag">Essay</span>
+        <h3>The Beginner Trader's Mindset</h3>
+        <p>What I wish I understood before my first real trade — mindset before method.</p>
+        <a class="lesson-link" href="https://medium.com/@merikaboss" target="_blank" rel="noopener">Read on Medium</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="connect">
+    <p class="eyebrow">Connect</p>
+    <h2 class="section-title">Find me everywhere</h2>
+    <div class="directory" id="directoryList"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-mark">MERIKABOSS</div>
+  <div class="foot-sub">Building one lesson at a time.</div>
+  <div class="foot-sub" style="margin-top:16px;">
+    <a class="foot-email" href="mailto:merikafx@gmail.com">merikafx@gmail.com</a>
+  </div>
+  <div class="foot-sub" style="margin-top:8px;">&copy; 2026 MerikaBoss. All rights reserved.</div>
+</footer>
+
+<script>
+  const links = [
+    { name: "TikTok", handle: "@merikaboss", url: "https://www.tiktok.com/@merikaboss" },
+    { name: "YouTube", handle: "@merikaboss", url: "https://www.youtube.com/@merikaboss" },
+    { name: "Instagram", handle: "@merikaboss", url: "https://www.instagram.com/merikaboss" },
+    { name: "X", handle: "@merikaboss", url: "https://x.com/merikaboss" },
+    { name: "Threads", handle: "@merikaboss", url: "https://www.threads.com/@merikaboss" },
+    { name: "LinkedIn", handle: "merika-boss", url: "https://www.linkedin.com/in/merika-boss-4516663b2" },
+    { name: "Pinterest", handle: "@merikaboss", url: "https://www.pinterest.com/merikaboss" },
+    { name: "Facebook", handle: "@merikaboss", url: "https://www.facebook.com/merikaboss" },
+    { name: "Linktree", handle: "all links", url: "https://linktr.ee/merikaboss" },
+    { name: "Blog", handle: "wordpress", url: "https://merikaboss.wordpress.com" },
+    { name: "Medium", handle: "essays", url: "https://medium.com/@merikaboss" }
+  ];
+
+  // ticker (duplicated for seamless loop)
+  const track = document.getElementById('tickerTrack');
+  const tickerHTML = links.map(l =>
+    `<a class="ticker-item" href="${l.url}" target="_blank" rel="noopener"><span class="dot"></span>${l.name} ${l.handle}</a>`
+  ).join('');
+  track.innerHTML = tickerHTML + tickerHTML;
+
+  // directory
+  const dir = document.getElementById('directoryList');
+  dir.innerHTML = links.map(l =>
+    `<a class="directory-row" href="${l.url}" target="_blank" rel="noopener">
+      <span class="platform">${l.name}</span>
+      <span class="handle">${l.handle}</span>
+    </a>`
+  ).join('');
+</script>
+
+</body>
+</html>
