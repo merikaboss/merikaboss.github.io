@@ -1,0 +1,20 @@
+name: Notify Bing IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build URL list and notify IndexNow
+        run: |
+          KEY="cf8aac4dbfe64002a493e3c2350961c0"
+          HOST="merikaboss.github.io"
+          URLS=$(find . -name "*.html" -not -path "./.git/*" | sed "s|^\.|https://$HOST|" | sed 's|/index\.html$|/|' | jq -R -s -c 'split("\n")[:-1]')
+          curl -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"https://$HOST/$KEY.txt\",\"urlList\":$URLS}"
