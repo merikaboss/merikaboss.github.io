@@ -18,3 +18,6 @@ jobs:
           curl -X POST "https://api.indexnow.org/IndexNow" \
             -H "Content-Type: application/json; charset=utf-8" \
             -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"https://$HOST/$KEY.txt\",\"urlList\":$URLS}"
+      - name: Ping Google with sitemap
+        run: |
+          curl "https://www.google.com/ping?sitemap=https://merikaboss.github.io/sitemap.xml"
