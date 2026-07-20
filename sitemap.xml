@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://merikaboss.github.io/</loc>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-gbpusd-short-signal-1h-chart.png</image:loc>
+      <image:title>GBP/USD Short Signal (1H)</image:title>
+      <image:caption>GBP/USD 1-hour chart showing a MerikaBoss short trade signal with entry, stop loss, and three take-profit targets.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-cadjpy-long-signal-1h-chart.png</image:loc>
+      <image:title>CAD/JPY Long Signal (1H)</image:title>
+      <image:caption>CAD/JPY 1-hour chart showing a MerikaBoss long trade signal with entry, stop loss, and take-profit levels hit.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-euraud-short-supply-demand-chart.png</image:loc>
+      <image:title>EUR/AUD Supply &amp; Demand Short (1H)</image:title>
+      <image:caption>EUR/AUD 1-hour chart with supply and demand zones and a MerikaBoss short trade signal.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-audchf-long-demand-zone-chart.png</image:loc>
+      <image:title>AUD/CHF Demand Zone Long (1H)</image:title>
+      <image:caption>AUD/CHF 1-hour chart showing a long trade entering from a demand zone with take-profit targets.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-btcusd-support-resistance-zones.png</image:loc>
+      <image:title>BTC/USD Support &amp; Resistance Map</image:title>
+      <image:caption>Bitcoin BTC/USD 1-hour chart showing verified and untested support and resistance zones with retest counts.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-supply-demand-indicator-calculations.png</image:loc>
+      <image:title>Indicator Calculations &amp; Logic</image:title>
+      <image:caption>Handwritten breakdown of the mathematical logic and calculations behind a supply and demand and S&amp;R trading indicator.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-supply-demand-sr-strategy-logic.png</image:loc>
+      <image:title>Supply &amp; Demand + S&amp;R Strategy Flow</image:title>
+      <image:caption>Flowchart diagram explaining how a supply and demand and support resistance trading indicator detects and manages zones.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://merikaboss.github.io/gallery/merikaboss-price-action-signal-strategy-flow.png</image:loc>
+      <image:title>Price Action Signal Strategy Flow</image:title>
+      <image:caption>Flowchart showing a support and resistance price action trading strategy from pivot detection to trade entry and exit.</image:caption>
+    </image:image>
+
   </url>
 </urlset>
