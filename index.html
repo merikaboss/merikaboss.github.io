@@ -34,6 +34,80 @@
   ]
 }
 </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "MerikaBoss Trade Charts, Signals & Strategy Notes",
+  "description": "Trade signal charts and hand-drawn strategy/indicator logic breakdowns by MerikaBoss, covering forex and crypto pairs.",
+  "itemListElement": [
+    {
+      "@type": "ImageObject",
+      "position": 1,
+      "name": "GBP/USD Short Signal (1H)",
+      "description": "GBP/USD 1-hour chart showing a MerikaBoss short trade signal with entry, stop loss, and three take-profit targets.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-gbpusd-short-signal-1h-chart.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    },
+    {
+      "@type": "ImageObject",
+      "position": 2,
+      "name": "CAD/JPY Long Signal (1H)",
+      "description": "CAD/JPY 1-hour chart showing a MerikaBoss long trade signal with entry, stop loss, and take-profit levels hit.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-cadjpy-long-signal-1h-chart.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    },
+    {
+      "@type": "ImageObject",
+      "position": 3,
+      "name": "EUR/AUD Supply & Demand Short (1H)",
+      "description": "EUR/AUD 1-hour chart with supply and demand zones and a MerikaBoss short trade signal.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-euraud-short-supply-demand-chart.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    },
+    {
+      "@type": "ImageObject",
+      "position": 4,
+      "name": "AUD/CHF Demand Zone Long (1H)",
+      "description": "AUD/CHF 1-hour chart showing a long trade entering from a demand zone with take-profit targets.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-audchf-long-demand-zone-chart.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    },
+    {
+      "@type": "ImageObject",
+      "position": 5,
+      "name": "BTC/USD Support & Resistance Map",
+      "description": "Bitcoin BTC/USD 1-hour chart showing verified and untested support and resistance zones with retest counts.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-btcusd-support-resistance-zones.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    },
+    {
+      "@type": "ImageObject",
+      "position": 6,
+      "name": "Indicator Calculations & Logic",
+      "description": "Handwritten breakdown of the mathematical logic and calculations behind a supply and demand and S&R trading indicator.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-supply-demand-indicator-calculations.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    },
+    {
+      "@type": "ImageObject",
+      "position": 7,
+      "name": "Supply & Demand + S&R Strategy Flow",
+      "description": "Flowchart diagram explaining how a supply and demand and support resistance trading indicator detects and manages zones.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-supply-demand-sr-strategy-logic.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    },
+    {
+      "@type": "ImageObject",
+      "position": 8,
+      "name": "Price Action Signal Strategy Flow",
+      "description": "Flowchart showing a support and resistance price action trading strategy from pivot detection to trade entry and exit.",
+      "contentUrl": "https://merikaboss.github.io/gallery/merikaboss-price-action-signal-strategy-flow.png",
+      "creator": { "@type": "Person", "name": "Merika Boss" }
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --bg:#0b0906;
@@ -300,6 +374,99 @@
     transform:translateX(4px);
   }
 
+  /* ---------- gallery ---------- */
+  .gallery-intro{
+    max-width:640px;
+    color:var(--ivory-dim);
+    font-size:1.05rem;
+    margin:0 0 48px;
+  }
+
+  .gallery-subhead{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:1rem;
+    letter-spacing:0.04em;
+    color:var(--gold);
+    margin:0 0 20px;
+    padding-top:8px;
+  }
+
+  .gallery-group + .gallery-group{
+    margin-top:56px;
+  }
+
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+
+  figure.gallery-card{
+    margin:0;
+    background:var(--bg);
+    display:flex;
+    flex-direction:column;
+    transition:background 0.25s ease;
+  }
+
+  figure.gallery-card:hover{
+    background:var(--bg-soft);
+  }
+
+  .gallery-img-wrap{
+    width:100%;
+    aspect-ratio:16 / 10;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:#000;
+  }
+
+  .gallery-img-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(0.96);
+    transition:transform 0.4s ease;
+  }
+
+  figure.gallery-card:hover .gallery-img-wrap img{
+    transform:scale(1.035);
+  }
+
+  figure.gallery-card figcaption{
+    padding:24px 26px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .gallery-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ember-bright);
+  }
+
+  figure.gallery-card h4{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--ivory);
+    margin:0;
+    line-height:1.4;
+  }
+
+  figure.gallery-card figcaption p{
+    color:var(--ivory-dim);
+    font-size:0.9rem;
+    margin:0;
+  }
+
   /* ---------- connect directory ---------- */
   .directory{
     border-top:1px solid var(--line);
@@ -364,6 +531,7 @@
   @media (prefers-reduced-motion: reduce){
     .emblem, .brand-name, .tagline{ animation:none; opacity:1; }
     .ticker-track{ animation:none; }
+    figure.gallery-card:hover .gallery-img-wrap img{ transform:none; }
   }
 
   :focus-visible{
@@ -437,6 +605,130 @@
     </div>
   </section>
 
+  <section id="gallery">
+    <p class="eyebrow">Gallery</p>
+    <h2 class="section-title">Charts, Signals &amp; Strategy Notes</h2>
+    <p class="gallery-intro">A look inside the work: live trade signals from the algorithmic tools I build, alongside the hand-worked math and logic behind them. Real charts, real setups — not stock screenshots.</p>
+
+    <div class="gallery-group">
+      <h3 class="gallery-subhead">Trade Signal Analysis</h3>
+      <div class="gallery-grid">
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-gbpusd-short-signal-1h-chart.png"
+                 alt="GBP/USD 1-hour chart showing a MerikaBoss short trade signal with entry, stop loss, and three take-profit targets"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Trade Signal</span>
+            <h4>GBP/USD Short Signal (1H)</h4>
+            <p>A short signal on GBP/USD generated by the MerikaBoss S&amp;R Signals indicator — entry, stop loss, and TP1–TP3 mapped in real time.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-cadjpy-long-signal-1h-chart.png"
+                 alt="CAD/JPY 1-hour chart showing a MerikaBoss long trade signal with entry, stop loss, and take-profit levels hit"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Trade Signal</span>
+            <h4>CAD/JPY Long Signal (1H)</h4>
+            <p>A long signal on CAD/JPY — price ran cleanly through TP1 and TP2 toward TP3, tracked with the custom S&amp;R Signals tool.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-euraud-short-supply-demand-chart.png"
+                 alt="EUR/AUD 1-hour chart with supply and demand zones and a MerikaBoss short trade signal"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Trade Signal</span>
+            <h4>EUR/AUD Supply &amp; Demand Short (1H)</h4>
+            <p>EUR/AUD short trade plotted against live supply and demand zones from the Supply &amp; Demand + S&amp;R Lines indicator.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-audchf-long-demand-zone-chart.png"
+                 alt="AUD/CHF 1-hour chart showing a long trade entering from a demand zone with take-profit targets"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Trade Signal</span>
+            <h4>AUD/CHF Demand Zone Long (1H)</h4>
+            <p>AUD/CHF long entry off a demand zone, with TP1 already hit and price extending toward TP2 and TP3.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-btcusd-support-resistance-zones.png"
+                 alt="Bitcoin BTC/USD 1-hour chart showing verified and untested support and resistance zones with retest counts"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Trade Signal</span>
+            <h4>BTC/USD Support &amp; Resistance Map</h4>
+            <p>BTC/USD mapped with verified vs. untested support and resistance zones, each labeled with retest count.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <div class="gallery-group">
+      <h3 class="gallery-subhead">Strategy &amp; Indicator Logic</h3>
+      <div class="gallery-grid">
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-supply-demand-indicator-calculations.png"
+                 alt="Handwritten breakdown of the mathematical logic and calculations behind a supply and demand and S&R trading indicator"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Strategy Notes</span>
+            <h4>Indicator Calculations &amp; Logic</h4>
+            <p>The math behind the MerikaBoss indicator — ATR, trend detection, zone construction, and support/resistance logic, worked out step by step.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-supply-demand-sr-strategy-logic.png"
+                 alt="Flowchart diagram explaining how a supply and demand and support resistance trading indicator detects and manages zones"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Strategy Notes</span>
+            <h4>Supply &amp; Demand + S&amp;R Strategy Flow</h4>
+            <p>How the indicator thinks: from input parameters to zone detection, mitigation, invalidation, and final chart output.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery/merikaboss-price-action-signal-strategy-flow.png"
+                 alt="Flowchart showing a support and resistance price action trading strategy from pivot detection to trade entry and exit"
+                 loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="gallery-tag">Strategy Notes</span>
+            <h4>Price Action Signal Strategy Flow</h4>
+            <p>The full price-action signal flow — pivots, rejection candles, entry rules, and risk-reward targets, from setup to result.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
   <section id="connect">
     <p class="eyebrow">Connect</p>
     <h2 class="section-title">Find me everywhere</h2>
@@ -487,4 +779,4 @@
 </script>
 
 </body>
-</html>  
+</html>
