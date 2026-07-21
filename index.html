@@ -431,6 +431,7 @@
     display:block;
     filter:saturate(0.96);
     transition:transform 0.4s ease;
+    cursor:zoom-in;
   }
 
   figure.gallery-card:hover .gallery-img-wrap img{
@@ -465,6 +466,118 @@
     color:var(--ivory-dim);
     font-size:0.9rem;
     margin:0;
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox-overlay{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    background:rgba(6,4,2,0.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.25s ease;
+  }
+
+  .lightbox-overlay.is-open{
+    opacity:1;
+    visibility:visible;
+  }
+
+  .lightbox-inner{
+    position:relative;
+    max-width:min(1100px, 92vw);
+    max-height:88vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+
+  .lightbox-inner img{
+    max-width:100%;
+    max-height:70vh;
+    object-fit:contain;
+    border:1px solid var(--gold-deep);
+    background:#000;
+    box-shadow:0 0 60px rgba(0,0,0,0.6);
+  }
+
+  .lightbox-caption{
+    text-align:center;
+    max-width:640px;
+  }
+
+  .lightbox-caption h4{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--gold-bright);
+    margin:0 0 6px;
+  }
+
+  .lightbox-caption p{
+    color:var(--ivory-dim);
+    font-size:0.88rem;
+    margin:0;
+  }
+
+  .lightbox-actions{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:4px;
+  }
+
+  .lightbox-download{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    color:var(--bg);
+    background:var(--gold);
+    padding:10px 20px;
+    border-radius:2px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:background 0.2s ease;
+  }
+
+  .lightbox-download:hover{
+    background:var(--gold-bright);
+  }
+
+  .lightbox-close{
+    position:absolute;
+    top:-44px;
+    right:0;
+    width:36px;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ivory-dim);
+    font-family:'JetBrains Mono', monospace;
+    font-size:1.4rem;
+    line-height:1;
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:50%;
+    cursor:pointer;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .lightbox-close:hover{
+    color:var(--gold-bright);
+    border-color:var(--gold-deep);
+  }
+
+  @media (max-width:600px){
+    .lightbox-close{ top:-40px; }
   }
 
   /* ---------- connect directory ---------- */
@@ -746,6 +859,20 @@
   <div class="foot-sub" style="margin-top:8px;">&copy; 2026 MerikaBoss. All rights reserved.</div>
 </footer>
 
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img id="lightboxImage" src="" alt="" />
+    <div class="lightbox-caption">
+      <h4 id="lightboxTitle"></h4>
+      <p id="lightboxDesc"></p>
+    </div>
+    <div class="lightbox-actions">
+      <a class="lightbox-download" id="lightboxDownload" href="" download>Download image ↓</a>
+    </div>
+  </div>
+</div>
+
 <script>
   const links = [
     { name: "TikTok", handle: "@merikaboss", url: "https://www.tiktok.com/@merikaboss" },
@@ -776,6 +903,49 @@
       <span class="handle">${l.handle}</span>
     </a>`
   ).join('');
+
+  // gallery lightbox
+  const overlay = document.getElementById('lightboxOverlay');
+  const lbImage = document.getElementById('lightboxImage');
+  const lbTitle = document.getElementById('lightboxTitle');
+  const lbDesc = document.getElementById('lightboxDesc');
+  const lbDownload = document.getElementById('lightboxDownload');
+  const lbClose = document.getElementById('lightboxClose');
+
+  function openLightbox(img){
+    const card = img.closest('.gallery-card');
+    const title = card ? card.querySelector('h4') : null;
+    const desc = card ? card.querySelector('figcaption p') : null;
+
+    lbImage.src = img.getAttribute('src');
+    lbImage.alt = img.getAttribute('alt') || '';
+    lbTitle.textContent = title ? title.textContent : '';
+    lbDesc.textContent = desc ? desc.textContent : '';
+    lbDownload.setAttribute('href', img.getAttribute('src'));
+    lbDownload.setAttribute('download', img.getAttribute('src').split('/').pop());
+
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gallery-img-wrap img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+  });
 </script>
 
 </body>
